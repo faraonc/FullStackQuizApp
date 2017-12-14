@@ -4,9 +4,9 @@ package edu.udacity.faraonc.fullstackquizapp;
  * Created by faraonc on 12/13/17.
  */
 
-class EmbeddedQuizMaker extends AbstractQuizMaker {
+class NetworkingQuizMaker extends AbstractQuizMaker {
 
-    EmbeddedQuizMaker(){
+    NetworkingQuizMaker(){
         init();
     }
 

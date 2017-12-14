@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="os_question0">
+        <item>2</item>
+        <item>Which of the following is shared between all of the threads in a process?
+        Assume a kernel-level thread implementation.</item>
+        <item>Register values, $File Descriptors, Scheduler priority, Local Variables</item>
+    </string-array>
+
+    <string-array name="os_question1">
+        <item>2</item>
+        <item>Which of the following is NOT used for synchronization?</item>
+        <item>Semaphore, Monitors, Busy waiting with test and set, $Reference bit</item>
+    </string-array>
+
+    <string-array name="os_question2">
+        <item>2</item>
+        <item>Which of the following is NOT included in an inode in Linux?</item>
+        <item>File Owner, $File name, File modification date, Pointer to the first data block</item>
+    </string-array>
+
+    <string-array name="os_question3">
+        <item>2</item>
+        <item>A user-level process cannot modify its own page table entries.</item>
+        <item>$True, False, </item>
+    </string-array>
+
+    <string-array name="os_question4">
+        <item>2</item>
+        <item>A thread gets its own heap.</item>
+        <item>True, $False, </item>
+    </string-array>
+
+    <string-array name="os_question5">
+        <item>2</item>
+        <item>Where do you allocate a local variable in Linux?</item>
+        <item>Heap, $Stack, Data, Code</item>
+    </string-array>
+
+    <string-array name="os_question6">
+        <item>1</item>
+        <item>According to Ken Thompson, which of the following 3 items define UNIX?</item>
+        <item>$Shell, $Kernel, Scheduler, File System, $Core set of applications</item>
+    </string-array>
+
+    <string-array name="os_question7">
+        <item>1</item>
+        <item>When creating a process with fork(), which of the following 2 items are shared between the parent and child processes?</item>
+        <item>Data, $Heap, $Stack</item>
+    </string-array>
+
+    <string-array name="os_question8">
+        <item>0</item>
+        <item>What contains the metadata of a file in Linux?</item>
+        <item>$Inode</item>
+    </string-array>
+
+    <string-array name="os_question9">
+        <item>0</item>
+        <item>A binary semaphore is also known as what?</item>
+        <item>$Mutex</item>
+    </string-array>
+
+</resources>

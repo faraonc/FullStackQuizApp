@@ -1,18 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context="edu.udacity.faraonc.fullstackquizapp.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:id="@+id/os_textview"
+            style="@style/CategoryStyle"
+            android:background="@color/category_os"
+            android:text="@string/os_textview_string" />
+
+        <TextView
+            android:id="@+id/networking_textview"
+            style="@style/CategoryStyle"
+            android:background="@color/category_networking"
+            android:text="@string/networking_textview_string" />
+
+        <TextView
+            android:id="@+id/webdev_textview"
+            style="@style/CategoryStyle"
+            android:background="@color/category_webdev"
+            android:text="@string/webdev_textview_string" />
+
+
+    </LinearLayout>
+
+
+</ScrollView>

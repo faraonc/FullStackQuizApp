@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">FullStackQuizApp</string>
+    <string name="app_name">Fullstack Quiz</string>
+    <string name="os_textview_string">Operating System</string>
+    <string name="networking_textview_string">Networking</string>
+    <string name="webdev_textview_string">Web Development</string>
+
+    <string name="os_constructor_error">OSQuizMaker Constructor</string>
 </resources>

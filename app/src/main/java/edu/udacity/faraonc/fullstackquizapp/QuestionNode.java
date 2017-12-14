@@ -1,32 +1,69 @@
 package edu.udacity.faraonc.fullstackquizapp;
 
+import java.util.Vector;
+import java.util.Random;
+
 /**
  * Created by faraonc on 12/13/17.
  */
 
-class QuestionNode {
+class QuestionNode implements Comparable<QuestionNode> {
     private QuestionTypeEnum type;
     private String choices[];
+    private String question;
+    private Vector<String> answers;
 
-    private String question[] = new String[2];
-    static final int QUESTION = 0;
-    static final int ANSWER = 1;
+    private final static int FIRST_CHAR = 0;
+    private final static int EQUAL = 0;
+    private final static int NOT_EQUAL = -1;
+    private final static int TRUE_FALSE_LENGTH = 2;
 
-    QuestionNode(String question, String[] choices, String answer, QuestionTypeEnum type){
-        this.question[QUESTION] = question;
-        this.question[ANSWER] = answer;
+    QuestionNode(String question, String[] choices, QuestionTypeEnum type) {
+        this.question = question;
+        this.answers = new Vector<>();
         this.type = type;
+        this.choices = new String[choices.length];
 
-        if(choices != null) {
-            this.choices = new String[choices.length];
-
-            for (int i = 0; i < choices.length; i++) {
+        for (int i = 0; i < choices.length; i++) {
+            if (choices[i].charAt(FIRST_CHAR) == '$') {
+                answers.add(choices[i]);
+                this.choices[i] = choices[i].replace("$", "");
+            } else {
                 this.choices[i] = choices[i];
             }
         }
+
+        if (this.choices.length > TRUE_FALSE_LENGTH) {
+            shuffleChoices();
+        }
+
     }
 
-    QuestionTypeEnum getType(){
+    QuestionTypeEnum getType() {
         return this.type;
+    }
+
+    private void shuffleChoices() {
+        // If running on Java 6 or older, use `new Random()` on RHS here
+        Random random = new Random();
+        for (int i = this.choices.length - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
+            // Simple swap
+            String temp = this.choices[index];
+            this.choices[index] = this.choices[i];
+            this.choices[i] = temp;
+        }
+    }
+
+    @Override
+    public String toString(){
+        return this.type + " " + this.question;
+    }
+
+    public int compareTo(QuestionNode rhs){
+        if(this.type == rhs.type && this.question.equals(rhs.question)){
+            return EQUAL;
+        }
+        return NOT_EQUAL;
     }
 }
