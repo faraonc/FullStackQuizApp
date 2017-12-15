@@ -9,25 +9,31 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:background="@android:color/black"
+            android:text="@string/query_category" />
+        <!--TODO add icons-->
 
         <TextView
             android:id="@+id/os_textview"
             style="@style/CategoryStyle"
-            android:background="@color/category_os"
+            android:background="@drawable/back"
             android:text="@string/os_textview_string" />
 
         <TextView
             android:id="@+id/networking_textview"
             style="@style/CategoryStyle"
-            android:background="@color/category_networking"
+            android:background="@drawable/back"
             android:text="@string/networking_textview_string" />
 
         <TextView
             android:id="@+id/webdev_textview"
             style="@style/CategoryStyle"
-            android:background="@color/category_webdev"
+            android:background="@drawable/back"
             android:text="@string/webdev_textview_string" />
 
 

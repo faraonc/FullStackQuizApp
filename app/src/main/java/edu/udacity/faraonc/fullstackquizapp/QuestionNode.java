@@ -27,7 +27,7 @@ class QuestionNode implements Comparable<QuestionNode> {
         for (int i = 0; i < choices.length; i++) {
             if (choices[i].charAt(FIRST_CHAR) == '$') {
                 answers.add(choices[i]);
-                this.choices[i] = choices[i].replace("$", "");
+                this.choices[i] = removeCharAt(choices[i],0);
             } else {
                 this.choices[i] = choices[i];
             }
@@ -36,7 +36,6 @@ class QuestionNode implements Comparable<QuestionNode> {
         if (this.choices.length > TRUE_FALSE_LENGTH) {
             shuffleChoices();
         }
-
     }
 
     QuestionTypeEnum getType() {
@@ -65,5 +64,17 @@ class QuestionNode implements Comparable<QuestionNode> {
             return EQUAL;
         }
         return NOT_EQUAL;
+    }
+
+    String getQuestion(){
+        return this.question;
+    }
+
+    String[] getChoices(){
+        return this.choices;
+    }
+
+    private static String removeCharAt(String s, int pos) {
+        return s.substring(0, pos) + s.substring(pos + 1);
     }
 }

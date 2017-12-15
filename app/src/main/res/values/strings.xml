@@ -3,6 +3,11 @@
     <string name="os_textview_string">Operating System</string>
     <string name="networking_textview_string">Networking</string>
     <string name="webdev_textview_string">Web Development</string>
-
+    <string name="question_heading">Question #</string>
+    <string name="prev_button">PREV</string>
+    <string name="submit_button">SUBMIT</string>
+    <string name="next_button">NEXT</string>
+    <string name="query_category">Pick Category</string>
+    <string name="default_answer">Write your answer here.</string>
     <string name="os_constructor_error">OSQuizMaker Constructor</string>
 </resources>
