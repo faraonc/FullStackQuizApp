@@ -43,10 +43,6 @@
                     android:id="@+id/checkbox_D"
                     style="@style/CheckBoxStyle" />
 
-                <CheckBox
-                    android:id="@+id/checkbox_E"
-                    style="@style/CheckBoxStyle" />
-
             </LinearLayout>
 
             <RadioGroup
@@ -67,10 +63,6 @@
 
                 <RadioButton
                     android:id="@+id/radio_choice_D"
-                    style="@style/RadioButtonStyle" />
-
-                <RadioButton
-                    android:id="@+id/radio_choice_E"
                     style="@style/RadioButtonStyle" />
 
             </RadioGroup>

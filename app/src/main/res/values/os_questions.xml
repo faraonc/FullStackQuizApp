@@ -47,7 +47,7 @@
     <string-array name="os_question7">
         <item>1</item>
         <item>When creating a process with fork(), which of the following 2 items are shared between the parent and child processes?</item>
-        <item>Data,$Heap,$Stack</item>
+        <item>Data variables,$Heap,$Stack,PID</item>
     </string-array>
 
     <string-array name="os_question8">

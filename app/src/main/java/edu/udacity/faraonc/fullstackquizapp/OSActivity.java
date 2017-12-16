@@ -2,6 +2,7 @@ package edu.udacity.faraonc.fullstackquizapp;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.view.View.OnClickListener;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.Vector;
@@ -56,14 +58,14 @@ public class OSActivity extends AppCompatActivity {
 
         setupPrevButton();
         setupNextButton();
+        setupSubmitButton();
         mapRadioButtons();
         mapCheckBoxes();
-        this.answerEditText = (EditText)findViewById(R.id.answer_edit_text);
+        this.answerEditText = (EditText) findViewById(R.id.answer_edit_text);
         display();
     }
 
-    //TODO save states
-    private void setupPrevButton(){
+    private void setupPrevButton() {
 
         Button prevButton = (Button) findViewById(R.id.prev_button);
 
@@ -72,18 +74,40 @@ public class OSActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-
-                if(currentQuestionNode > 0){
+                if (currentQuestionNode > 0) {
+                    saveQuestionNodeState();
                     currentQuestionNode--;
                     display();
                 }
             }
         });
-
     }
 
-    //TODO save states
-    private void setupNextButton(){
+    private void setupSubmitButton() {
+
+        Button submitButton = (Button) findViewById(R.id.submit_button);
+
+        // Set a click listener on that View
+        submitButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                saveQuestionNodeState();
+                int correctAnswer = 0;
+                for (int i = 0; i < questionNodesVector.size(); i++) {
+                    if (questionNodesVector.get(i).compareAnswer()) {
+                        correctAnswer++;
+                    }
+                }
+                String message = getText(R.string.score_heading) + "  " + String.valueOf(correctAnswer) + " / " + String.valueOf(questionNodesVector.size());
+                Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL | Gravity.RIGHT, 25, 10);
+                toast.show();
+            }
+        });
+    }
+
+    private void setupNextButton() {
 
         Button nextButton = (Button) findViewById(R.id.next_button);
 
@@ -92,13 +116,63 @@ public class OSActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                if(currentQuestionNode < questionNodesVector.size() - 1){
+                if (currentQuestionNode < questionNodesVector.size() - 1) {
+                    saveQuestionNodeState();
                     currentQuestionNode++;
                     display();
                 }
             }
         });
+    }
 
+    private void saveQuestionNodeState() {
+
+        switch (this.questionNodesVector.get(this.currentQuestionNode).getType()) {
+            case RADIO:
+                saveRadioButtons();
+                break;
+
+            case CHECK_BOX:
+                saveCheckBoxes();
+                break;
+
+            case TEXT:
+                saveTextBox();
+        }
+    }
+
+    private void saveRadioButtons() {
+
+        boolean states[] = new boolean[this.radioButtonsVector.size()];
+        String answers[] = {this.answerEditText.getText().toString()};
+        for (int i = 0; i < this.radioButtonsVector.size(); i++) {
+            states[i] = this.radioButtonsVector.get(i).isChecked();
+
+        }
+        this.questionNodesVector.get(this.currentQuestionNode).setState(states);
+        RadioButton rb = ((RadioButton) findViewById(this.radioPanel.getCheckedRadioButtonId()));
+        if (rb != null) {
+            this.questionNodesVector.get(this.currentQuestionNode).setStateAnswer(rb.getText().toString());
+        }
+    }
+
+    private void saveCheckBoxes() {
+
+        boolean states[] = new boolean[this.checkBoxesVector.size()];
+        String answers[] = new String[this.checkBoxesVector.size()];
+        int answerIndex = 0;
+        for (int i = 0; i < this.checkBoxesVector.size(); i++) {
+            if (this.checkBoxesVector.get(i).isChecked()) {
+                states[i] = true;
+                answers[answerIndex++] = this.checkBoxesVector.get(i).getText().toString();
+            }
+        }
+        this.questionNodesVector.get(this.currentQuestionNode).setState(states);
+        this.questionNodesVector.get(this.currentQuestionNode).setStateAnswer(answers);
+    }
+
+    private void saveTextBox() {
+        this.questionNodesVector.get(this.currentQuestionNode).setStateAnswer(this.answerEditText.getText().toString());
     }
 
     private void mapRadioButtons() {
@@ -108,7 +182,7 @@ public class OSActivity extends AppCompatActivity {
         this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_B));
         this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_C));
         this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_D));
-        this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_E));
+
     }
 
     private void mapCheckBoxes() {
@@ -118,12 +192,14 @@ public class OSActivity extends AppCompatActivity {
         this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_B));
         this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_C));
         this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_D));
-        this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_E));
+
     }
 
     private void display() {
+
         updateQuestionNumber();
         displayCurrentQuestionNode();
+        restoreStates();
         displayCurrentChoices();
     }
 
@@ -136,32 +212,76 @@ public class OSActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.question_textview)).setText(this.questionNodesVector.get(this.currentQuestionNode).getQuestion());
     }
 
-    private void displayCurrentChoices() {
+    private void restoreStates() {
 
-        QuestionNode node = this.questionNodesVector.get(this.currentQuestionNode);
-
-        switch (node.getType()) {
+        switch (this.questionNodesVector.get(this.currentQuestionNode).getType()) {
             case RADIO:
-                displayRadioChoices(node);
+                restoreRadioButtons();
                 break;
 
             case CHECK_BOX:
-                displayCheckBoxes(node);
+                restoreCheckBoxes();
                 break;
 
             case TEXT:
-                displayTextBox(node);
-                break;
+                restoreTextBox();
         }
     }
 
-    private void displayRadioChoices(QuestionNode node) {
+    private void restoreRadioButtons() {
+        boolean states[] = this.questionNodesVector
+                .get(this.currentQuestionNode)
+                .getStates(this.questionNodesVector.get(this.currentQuestionNode).getType());
+
+        this.radioPanel.clearCheck();
+
+        for (int i = 0; i < this.radioButtonsVector.size(); i++) {
+            this.radioButtonsVector.get(i).setChecked(states[i]);
+        }
+    }
+
+    private void restoreCheckBoxes() {
+        boolean states[] = this.questionNodesVector
+                .get(this.currentQuestionNode)
+                .getStates(this.questionNodesVector.get(this.currentQuestionNode).getType());
+
+        for (int i = 0; i < this.checkBoxesVector.size(); i++) {
+            this.checkBoxesVector.get(i).setChecked(states[i]);
+        }
+    }
+
+    private void restoreTextBox() {
+        if (!this.questionNodesVector.get(this.currentQuestionNode).getState().isEmpty()) {
+            this.answerEditText.setText(this.questionNodesVector.get(this.currentQuestionNode).getState().firstElement());
+        } else {
+            this.answerEditText.setText("");
+        }
+
+    }
+
+    private void displayCurrentChoices() {
+
+        switch (this.questionNodesVector.get(this.currentQuestionNode).getType()) {
+            case RADIO:
+                displayRadioChoices();
+                break;
+
+            case CHECK_BOX:
+                displayCheckBoxes();
+                break;
+
+            case TEXT:
+                displayTextBox();
+        }
+    }
+
+    private void displayRadioChoices() {
 
         hideCheckBoxPanel();
         hideTextBox();
         hideRadioPanel();
 
-        String choices[] = node.getChoices();
+        String choices[] = this.questionNodesVector.get(this.currentQuestionNode).getChoices();
 
         for (int i = 0; i < choices.length; i++) {
             this.radioButtonsVector.get(i).setText(choices[i]);
@@ -170,13 +290,13 @@ public class OSActivity extends AppCompatActivity {
         this.radioPanel.setVisibility(View.VISIBLE);
     }
 
-    private void displayCheckBoxes(QuestionNode node) {
+    private void displayCheckBoxes() {
 
         hideRadioPanel();
         hideTextBox();
         hideCheckBoxPanel();
 
-        String choices[] = node.getChoices();
+        String choices[] = this.questionNodesVector.get(this.currentQuestionNode).getChoices();
 
         for (int i = 0; i < choices.length; i++) {
             this.checkBoxesVector.get(i).setText(choices[i]);
@@ -185,7 +305,7 @@ public class OSActivity extends AppCompatActivity {
         this.checkBoxPanel.setVisibility(View.VISIBLE);
     }
 
-    private void displayTextBox(QuestionNode node){
+    private void displayTextBox() {
         hideCheckBoxPanel();
         hideRadioPanel();
         this.answerEditText.setVisibility(View.VISIBLE);
@@ -206,7 +326,8 @@ public class OSActivity extends AppCompatActivity {
         this.checkBoxPanel.setVisibility(View.GONE);
     }
 
-    private void hideTextBox(){
+    private void hideTextBox() {
         this.answerEditText.setVisibility(View.GONE);
     }
+
 }
