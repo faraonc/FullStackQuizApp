@@ -178,20 +178,20 @@ public class OSActivity extends AppCompatActivity {
     private void mapRadioButtons() {
 
         this.radioPanel = (RadioGroup) findViewById(R.id.choices_radio_group);
-        this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_A));
-        this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_B));
-        this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_C));
-        this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_D));
+//        this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_A));
+//        this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_B));
+//        this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_C));
+//        this.radioButtonsVector.add((RadioButton) findViewById(R.id.radio_choice_D));
 
     }
 
     private void mapCheckBoxes() {
 
         this.checkBoxPanel = (LinearLayout) findViewById(R.id.checkboxes_group);
-        this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_A));
-        this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_B));
-        this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_C));
-        this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_D));
+//        this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_A));
+//        this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_B));
+//        this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_C));
+//        this.checkBoxesVector.add((CheckBox) findViewById(R.id.checkbox_D));
 
     }
 
@@ -199,8 +199,10 @@ public class OSActivity extends AppCompatActivity {
 
         updateQuestionNumber();
         displayCurrentQuestionNode();
+        setupCurrentChoices();
         restoreStates();
-        displayCurrentChoices();
+        displayChoices();
+
     }
 
     private void updateQuestionNumber() {
@@ -259,50 +261,75 @@ public class OSActivity extends AppCompatActivity {
 
     }
 
-    private void displayCurrentChoices() {
-
+    private void displayChoices(){
         switch (this.questionNodesVector.get(this.currentQuestionNode).getType()) {
             case RADIO:
-                displayRadioChoices();
+                this.radioPanel.setVisibility(View.VISIBLE);
                 break;
 
             case CHECK_BOX:
-                displayCheckBoxes();
+                this.checkBoxPanel.setVisibility(View.VISIBLE);
                 break;
 
             case TEXT:
                 displayTextBox();
         }
+
+
+
     }
 
-    private void displayRadioChoices() {
+    private void setupCurrentChoices() {
+
+        switch (this.questionNodesVector.get(this.currentQuestionNode).getType()) {
+            case RADIO:
+                setupRadioChoices();
+                break;
+
+            case CHECK_BOX:
+                setupCheckBoxes();
+        }
+    }
+
+    private void setupRadioChoices() {
 
         hideCheckBoxPanel();
         hideTextBox();
         hideRadioPanel();
 
+        this.radioPanel.removeAllViews();
+        this.radioButtonsVector.clear();
+
         String choices[] = this.questionNodesVector.get(this.currentQuestionNode).getChoices();
 
         for (int i = 0; i < choices.length; i++) {
-            this.radioButtonsVector.get(i).setText(choices[i]);
-            this.radioButtonsVector.get(i).setVisibility(View.VISIBLE);
+            RadioButton rb = new RadioButton(this);
+            rb.setTextAppearance(this, R.style.RadioButtonStyle);
+            rb.setText(choices[i]);
+            this.radioPanel.addView(rb);
+            this.radioButtonsVector.add(rb);
         }
-        this.radioPanel.setVisibility(View.VISIBLE);
+
     }
 
-    private void displayCheckBoxes() {
+    private void setupCheckBoxes() {
 
-        hideRadioPanel();
-        hideTextBox();
         hideCheckBoxPanel();
+        hideTextBox();
+        hideRadioPanel();
+
+        this.checkBoxPanel.removeAllViews();
+        this.checkBoxesVector.clear();
 
         String choices[] = this.questionNodesVector.get(this.currentQuestionNode).getChoices();
 
         for (int i = 0; i < choices.length; i++) {
-            this.checkBoxesVector.get(i).setText(choices[i]);
-            this.checkBoxesVector.get(i).setVisibility(View.VISIBLE);
+            CheckBox cb = new CheckBox(this);
+            cb.setTextAppearance(this, R.style.CheckBoxStyle);
+            cb.setText(choices[i]);
+            this.checkBoxesVector.add(cb);
+            this.checkBoxPanel.addView(cb);
         }
-        this.checkBoxPanel.setVisibility(View.VISIBLE);
     }
 
     private void displayTextBox() {
@@ -313,16 +340,16 @@ public class OSActivity extends AppCompatActivity {
     }
 
     private void hideRadioPanel() {
-        for (int i = 0; i < this.radioButtonsVector.size(); i++) {
-            this.radioButtonsVector.get(i).setVisibility(View.GONE);
-        }
+//        for (int i = 0; i < this.radioButtonsVector.size(); i++) {
+//            this.radioButtonsVector.get(i).setVisibility(View.GONE);
+//        }
         this.radioPanel.setVisibility(View.GONE);
     }
 
     private void hideCheckBoxPanel() {
-        for (int i = 0; i < this.checkBoxesVector.size(); i++) {
-            this.checkBoxesVector.get(i).setVisibility(View.GONE);
-        }
+//        for (int i = 0; i < this.checkBoxesVector.size(); i++) {
+//            this.checkBoxesVector.get(i).setVisibility(View.GONE);
+//        }
         this.checkBoxPanel.setVisibility(View.GONE);
     }
 

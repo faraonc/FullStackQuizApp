@@ -79,7 +79,7 @@ class QuestionNode implements Comparable<QuestionNode> {
     }
 
     void setState(boolean states[]) {
-        for (int i = 0; i < QuestionNodeState.MAX_CHOICES; i++) {
+        for (int i = 0; i < states.length; i++) {
             this.questionState.states[i] = states[i];
         }
     }

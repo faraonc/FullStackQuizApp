@@ -27,21 +27,21 @@
                 android:id="@+id/checkboxes_group"
                 style="@style/CheckBoxGroupStyle">
 
-                <CheckBox
-                    android:id="@+id/checkbox_A"
-                    style="@style/CheckBoxStyle" />
+                <!--<CheckBox-->
+                    <!--android:id="@+id/checkbox_A"-->
+                    <!--style="@style/CheckBoxStyle" />-->
 
-                <CheckBox
-                    android:id="@+id/checkbox_B"
-                    style="@style/CheckBoxStyle" />
+                <!--<CheckBox-->
+                    <!--android:id="@+id/checkbox_B"-->
+                    <!--style="@style/CheckBoxStyle" />-->
 
-                <CheckBox
-                    android:id="@+id/checkbox_C"
-                    style="@style/CheckBoxStyle" />
+                <!--<CheckBox-->
+                    <!--android:id="@+id/checkbox_C"-->
+                    <!--style="@style/CheckBoxStyle" />-->
 
-                <CheckBox
-                    android:id="@+id/checkbox_D"
-                    style="@style/CheckBoxStyle" />
+                <!--<CheckBox-->
+                    <!--android:id="@+id/checkbox_D"-->
+                    <!--style="@style/CheckBoxStyle" />-->
 
             </LinearLayout>
 
@@ -49,21 +49,21 @@
                 android:id="@+id/choices_radio_group"
                 style="@style/RadioGroupStyle">
 
-                <RadioButton
-                    android:id="@+id/radio_choice_A"
-                    style="@style/RadioButtonStyle" />
+                <!--<RadioButton-->
+                    <!--android:id="@+id/radio_choice_A"-->
+                    <!--style="@style/RadioButtonStyle" />-->
 
-                <RadioButton
-                    android:id="@+id/radio_choice_B"
-                    style="@style/RadioButtonStyle" />
+                <!--<RadioButton-->
+                    <!--android:id="@+id/radio_choice_B"-->
+                    <!--style="@style/RadioButtonStyle" />-->
 
-                <RadioButton
-                    android:id="@+id/radio_choice_C"
-                    style="@style/RadioButtonStyle" />
+                <!--<RadioButton-->
+                    <!--android:id="@+id/radio_choice_C"-->
+                    <!--style="@style/RadioButtonStyle" />-->
 
-                <RadioButton
-                    android:id="@+id/radio_choice_D"
-                    style="@style/RadioButtonStyle" />
+                <!--<RadioButton-->
+                    <!--android:id="@+id/radio_choice_D"-->
+                    <!--style="@style/RadioButtonStyle" />-->
 
             </RadioGroup>
 
