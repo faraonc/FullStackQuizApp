@@ -4,7 +4,7 @@
 
 This is a quiz app for android that is highly extensible.
 
-![picture](images/landscape_main.png)
+![picture](images/landscape_main.png =100x100)
 
 ## The following are some of the features:
 
@@ -12,8 +12,8 @@ This is a quiz app for android that is highly extensible.
   - Submit button is debounced.
   - Category can be easily added using a separate xml file of questions and modifying the enums.
 
-![picture](images/checkbox.png)
+![picture](images/checkbox.png =100x100)
 
-![picture](images/edit_text.png)
+![picture](images/edit_text.png =100x100)
 
-![picture](images/radio.png)
+![picture](images/radio.png =100x100)
