@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string-array name="os_question0">
         <item>2</item>
         <item>Which of the following is shared between all of the threads in a process?
@@ -61,5 +60,4 @@
         <item>A binary semaphore is also known as what?</item>
         <item>$Mutex</item>
     </string-array>
-
 </resources>

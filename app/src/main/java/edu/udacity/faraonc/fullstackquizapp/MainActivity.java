@@ -7,26 +7,53 @@ import android.widget.TextView;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import android.util.Log;
-
+/**
+ * This the the MainActivty for the main category page.
+ *
+ * @author ConardJames
+ * @version 121617-01
+ */
 public class MainActivity extends AppCompatActivity {
 
+    //key for intent
+    final static String SESSION = "SESSION_TYPE";
+
     @Override
+    /**
+     * Set activity and layout.
+     *
+     * @param savedInstanceState the state of the activity.
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView numbers = (TextView) findViewById(R.id.os_textview);
-
-        // Set a click listener on that View
-        numbers.setOnClickListener(new OnClickListener() {
-            // The code in this method will be executed when the numbers category is clicked on.
+        TextView os = (TextView) findViewById(R.id.os_textview);
+        os.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Create a new intent to open the {@link OSActivity}
-                Intent osIntent = new Intent(MainActivity.this, OSActivity.class);
+                Intent osIntent = new Intent(MainActivity.this, QuizActivity.class);
+                osIntent.putExtra(SESSION, QuizTypeEnum.OS);
+                startActivity(osIntent);
+            }
+        });
 
-                // Start the new activity
+        os = (TextView) findViewById(R.id.networking_textview);
+        os.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent osIntent = new Intent(MainActivity.this, QuizActivity.class);
+                osIntent.putExtra(SESSION, QuizTypeEnum.NETWORKING);
+                startActivity(osIntent);
+            }
+        });
+
+        os = (TextView) findViewById(R.id.webdev_textview);
+        os.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent osIntent = new Intent(MainActivity.this, QuizActivity.class);
+                osIntent.putExtra(SESSION, QuizTypeEnum.WEB_DEVELOPMENT);
                 startActivity(osIntent);
             }
         });

@@ -10,5 +10,5 @@
     <string name="query_category">Pick Category</string>
     <string name="default_answer">Write your answer here.</string>
     <string name="score_heading">SCORE: </string>
-    <string name="os_constructor_error">OSQuizMaker Constructor</string>
+    <string name="quizmaker_constructor_error">QuizMaker Constructor</string>
 </resources>

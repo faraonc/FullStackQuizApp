@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="web_development_question0">
+        <item>2</item>
+        <item>CSS is associated with which layer of the web client architecture:</item>
+        <item>Behavioral,$Presentation,UI,Content</item>
+    </string-array>
+
+    <string-array name="web_development_question1">
+        <item>2</item>
+        <item>A declared but uninitialized variable in JavaScript will have a value of:</item>
+        <item>0,null,uninitialized,$undefined</item>
+    </string-array>
+
+    <string-array name="web_development_question2">
+        <item>2</item>
+        <item>The DOM for a loaded document can best be described as what type of structure?</item>
+        <item>Table,$Tree,Network,List</item>
+    </string-array>
+
+    <string-array name="web_development_question3">
+        <item>2</item>
+        <item>An HTML id attribute name can be used to affect styling only once in an HTML document.</item>
+        <item>$True,False</item>
+    </string-array>
+
+    <string-array name="web_development_question4">
+        <item>2</item>
+        <item>An HTML class is indicated in CSS with a hashtag.</item>
+        <item>True,$False</item>
+    </string-array>
+
+    <string-array name="web_development_question5">
+        <item>2</item>
+        <item>A JavaScript object constructor function is best described as:</item>
+        <item>Create an empty JS object,$Create objects from a predefined template,Compute intensive calculations,No object constructor in JS</item>
+    </string-array>
+
+    <string-array name="web_development_question6">
+        <item>1</item>
+        <item>Which are following legal ways to control font size in CSS?</item>
+        <item>$font-size: 7.5rem,$font-size: 25%;,font-size="12pt",$font-size: 16px;</item>
+    </string-array>
+
+    <string-array name="web_development_question7">
+        <item>1</item>
+        <item>A key/value pair is for a JavaScript object is also known as:</item>
+        <item>There are no other terms for key/value pair,$A name/value pair,$An object property,dictionary</item>
+    </string-array>
+
+    <string-array name="web_development_question8">
+        <item>0</item>
+        <item>What logical operator is used for strict equivalent?</item>
+        <item>$===</item>
+    </string-array>
+
+    <string-array name="web_development_question9">
+        <item>0</item>
+        <item>Write the char that represents all elements as nodes in the DOM?</item>
+        <item>$*</item>
+    </string-array>
+</resources>

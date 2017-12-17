@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="networking_question0">
+        <item>2</item>
+        <item>Which one of the following task is not done by data link layer?</item>
+        <item>Framing,$Channel coding,Error control,Flow control</item>
+    </string-array>
+
+    <string-array name="networking_question1">
+        <item>2</item>
+        <item>Header of a frame generally contains:</item>
+        <item>Synchronization bytes,Addresses,Frame identifier,$All of the mentioned</item>
+    </string-array>
+
+    <string-array name="networking_question2">
+        <item>2</item>
+        <item>The packet sent by a node to the source to inform it of congestion is called:</item>
+        <item>Explicit,$Choke,Discard,Backpressure</item>
+    </string-array>
+
+    <string-array name="networking_question3">
+        <item>2</item>
+        <item>TCP is a reliable communication.</item>
+        <item>$True,False</item>
+    </string-array>
+
+    <string-array name="networking_question4">
+        <item>2</item>
+        <item>FIN flag is used for closing the connection between nodes.</item>
+        <item>$True,False</item>
+    </string-array>
+
+    <string-array name="networking_question5">
+        <item>2</item>
+        <item>Which of the following is false with respect to UDP?</item>
+        <item>Unreliable,$Connection-oriented,Transport Layer Protocol,All of the mentioned</item>
+    </string-array>
+
+    <string-array name="networking_question6">
+        <item>1</item>
+        <item>Which schemes are used for error-detection?</item>
+        <item>$CRC,$Checksums,Booleans,AIMD</item>
+    </string-array>
+
+    <string-array name="networking_question7">
+        <item>1</item>
+        <item>Which layers are not required for all the nodes in the network?</item>
+        <item>Physical,$Session,$Presentation,Link</item>
+    </string-array>
+
+    <string-array name="networking_question8">
+        <item>0</item>
+        <item>It is also known as physical address or Ethernet address.</item>
+        <item>$MAC</item>
+    </string-array>
+
+    <string-array name="networking_question9">
+        <item>0</item>
+        <item>Its main task is to automatically assign an IP address to devices across the network.</item>
+        <item>$DHCP</item>
+    </string-array>
+</resources>

@@ -12,4 +12,12 @@
     <!-- Background color for the category -->
     <color name="category">#4857af</color>
 
+    <!-- Background color for the prev button -->
+    <color name="prev">#00B8D4</color>
+
+    <!-- Background color for the submit button -->
+    <color name="submit">#F44336</color>
+
+    <!-- Background color for the next button -->
+    <color name="next">#9575CD</color>
 </resources>

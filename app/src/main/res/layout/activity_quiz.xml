@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MainPanelStyle"
+    tools:context="edu.udacity.faraonc.fullstackquizapp.QuizActivity">
+
+    <ScrollView style="@style/ScrollStyle">
+
+        <LinearLayout
+            android:id="@+id/quiz_panel"
+            style="@style/QuizPanelStyle">
+
+            <TextView
+                android:id="@+id/question_number_textview"
+                style="@style/QuestionHeadingStyle" />
+
+            <TextView
+                android:id="@+id/question_textview"
+                style="@style/QuestionStyle" />
+
+            <EditText
+                android:id="@+id/answer_edit_text"
+                style="@style/EditTextStyle" />
+
+            <LinearLayout
+                android:id="@+id/checkboxes_group"
+                style="@style/CheckBoxGroupStyle">
+
+            </LinearLayout>
+
+            <RadioGroup
+                android:id="@+id/choices_radio_group"
+                style="@style/RadioGroupStyle">
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout style="@style/ButtonPaneStyle">
+
+        <Button
+            android:id="@+id/prev_button"
+            style="@style/ButtonStyle"
+            android:background="@color/prev"
+            android:text="@string/prev_button" />
+
+        <Button
+            android:id="@+id/submit_button"
+            style="@style/ButtonStyle"
+            android:background="@color/submit"
+            android:text="@string/submit_button" />
+
+        <Button
+            android:id="@+id/next_button"
+            style="@style/ButtonStyle"
+            android:background="@color/next"
+            android:text="@string/next_button" />
+    </LinearLayout>
+
+</LinearLayout>
