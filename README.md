@@ -1,6 +1,6 @@
 # Android Fullstack Quiz App
 
-![picture](images/portrait_main.png) {:width="400px"}
+![picture](images/portrait_main.png)
 
 This is a quiz app for android that is highly extensible.
 
@@ -12,8 +12,8 @@ This is a quiz app for android that is highly extensible.
   - Submit button is debounced.
   - Category can be easily added using a separate xml file of questions and modifying the enums.
 
-![picture](images/checkbox.png) {:width="400px"}
+![picture](images/checkbox.jpg)
 
-![picture](images/edit_text.png) {:width="400px"}
+![picture](images/edit_text.png)
 
-![picture](images/radio.png) {:width="400px"}
+![picture](images/radio.png)
